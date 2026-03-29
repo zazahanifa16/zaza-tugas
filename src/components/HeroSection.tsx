@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Linkedin, Youtube, Instagram } from 'lucide-react';
+import { ArrowDown, Github, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ThreeScene from './ThreeScene';
 
@@ -16,90 +16,101 @@ export default function HeroSection() {
       <ThreeScene />
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
           
-          {/* Badge */}
-          <motion.span 
-            className="inline-block px-4 py-2 rounded-full bg-white/40 backdrop-blur text-sm font-medium text-pink-700 mb-6"
+          {/* FOTO */}
+          <motion.img
+            src="/profile.jpg" // simpan foto di public
+            alt="Zaza Hanifa"
+            className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-4 border-pink-300 shadow-lg"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-          >
-            👋 Halo, aku Zaza Hanifa
-          </motion.span>
+            transition={{ duration: 0.8 }}
+            whileHover={{ scale: 1.05 }}
+            onError={(e) => {
+              e.currentTarget.src = 'https://via.placeholder.com/300x300.png?text=Zaza';
+            }}
+          />
 
-          {/* Title */}
-          <motion.h1
-            className="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-pink-900"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            Siswi MAN 1 Banda Aceh
-            <br />
-            <span className="bg-gradient-to-r from-pink-500 to-pink-700 bg-clip-text text-transparent">
-              & Future Developer
-            </span>
-          </motion.h1>
-
-          {/* Description */}
-          <motion.p
-            className="text-lg md:text-xl text-pink-800 mb-8 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            Aku adalah siswi yang tertarik dengan dunia teknologi, desain, 
-            dan pengembangan web. Aku suka belajar hal baru dan membuat karya yang menarik ✨
-          </motion.p>
-
-          {/* Buttons */}
-          <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <Button 
-              className="rounded-full px-8 bg-pink-600 hover:bg-pink-700 text-white"
-              onClick={() => {
-                const el = document.querySelector('#projects');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
+          {/* TEXT */}
+          <div className="text-center md:text-left">
+            <motion.span 
+              className="inline-block px-4 py-2 rounded-full bg-white/40 backdrop-blur text-sm font-medium text-pink-700 mb-6"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
             >
-              Lihat Karya Aku
-            </Button>
+              👋 Halo, aku Zaza Hanifa
+            </motion.span>
 
-            <Button 
-              variant="outline"
-              className="rounded-full px-8 border-pink-500 text-pink-700 hover:bg-pink-100"
-              onClick={() => {
-                const el = document.querySelector('#contact');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
+            <motion.h1
+              className="font-display text-4xl md:text-6xl font-bold mb-6 text-pink-900"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
             >
-              Hubungi Aku
-            </Button>
-          </motion.div>
+              Siswi MAN 1 Banda Aceh
+              <br />
+              <span className="bg-gradient-to-r from-pink-500 to-pink-700 bg-clip-text text-transparent">
+                & Future Developer
+              </span>
+            </motion.h1>
 
-          {/* Social */}
-          <motion.div className="flex items-center justify-center gap-6">
-            {[
-              { icon: Github, href: 'https://github.com/zazahanifa16' },
-              { icon: Instagram, href: 'https://www.instagram.com/syazahni' },
-            ].map((s, i) => (
-              <motion.a
-                key={i}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full bg-white/40 backdrop-blur hover:bg-pink-200 text-pink-700"
-                whileHover={{ scale: 1.1 }}
+            <motion.p
+              className="text-lg text-pink-800 mb-8 max-w-xl"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              Aku adalah siswi yang tertarik dengan dunia teknologi, desain, dan pengembangan web.
+              Aku suka belajar hal baru dan membuat karya yang menarik ✨
+            </motion.p>
+
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 mb-8"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <Button 
+                className="rounded-full px-8 bg-pink-600 hover:bg-pink-700 text-white"
+                onClick={() => {
+                  const el = document.querySelector('#projects');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
               >
-                <s.icon className="w-5 h-5" />
-              </motion.a>
-            ))}
-          </motion.div>
+                Lihat Karya Aku
+              </Button>
+
+              <Button 
+                variant="outline"
+                className="rounded-full px-8 border-pink-500 text-pink-700 hover:bg-pink-100"
+                onClick={() => {
+                  const el = document.querySelector('#contact');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Hubungi Aku
+              </Button>
+            </motion.div>
+
+            <motion.div className="flex gap-4 justify-center md:justify-start">
+              {[
+                { icon: Github, href: 'https://github.com/zazahanifa16' },
+                { icon: Instagram, href: 'https://www.instagram.com/syazahni' },
+              ].map((s, i) => (
+                <motion.a
+                  key={i}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full bg-white/40 backdrop-blur hover:bg-pink-200 text-pink-700"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <s.icon className="w-5 h-5" />
+                </motion.a>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
 
-      {/* Scroll */}
       <motion.button
         onClick={scrollToAbout}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 p-3 rounded-full bg-white/40 backdrop-blur animate-bounce"
