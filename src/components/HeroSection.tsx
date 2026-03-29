@@ -12,7 +12,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-pink-200 via-pink-300 to-pink-400">
       <ThreeScene />
       
       <div className="container mx-auto px-4 relative z-10">
@@ -23,12 +23,12 @@ export default function HeroSection() {
             transition={{ duration: 0.8 }}
           >
             <motion.span 
-              className="inline-block px-4 py-2 rounded-full glass text-sm font-medium text-primary mb-6"
+              className="inline-block px-4 py-2 rounded-full bg-white/40 backdrop-blur text-sm font-medium text-pink-700 mb-6"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             >
-              👋 Selamat datang di portfolio saya
+              👋 Halo, aku Zaza Hanifa
             </motion.span>
           </motion.div>
 
@@ -36,21 +36,24 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
+            className="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-pink-900"
           >
-            Fullstack Developer
+            Siswi MAN 1 Banda Aceh
             <br />
-            <span className="text-gradient">&amp; Content Creator</span>
+            <span className="bg-gradient-to-r from-pink-500 to-pink-700 bg-clip-text text-transparent">
+              &amp; Future Developer
+            </span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-pink-800 mb-8 max-w-2xl mx-auto"
           >
-            Saya membangun aplikasi web yang indah dan fungsional, 
-            serta membagikan pengetahuan melalui konten yang inspiratif.
+            Aku adalah siswi MAN 1 Banda Aceh yang tertarik dengan dunia teknologi,
+            desain, dan pengembangan web. Aku suka belajar hal baru dan berbagi
+            inspirasi melalui karya-karyaku.
           </motion.p>
 
           <motion.div
@@ -61,24 +64,24 @@ export default function HeroSection() {
           >
             <Button 
               size="lg" 
-              className="rounded-full px-8 shadow-glow"
+              className="rounded-full px-8 bg-pink-600 hover:bg-pink-700 text-white shadow-lg"
               onClick={() => {
                 const element = document.querySelector('#projects');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              Lihat Projects
+              Lihat Karya Aku
             </Button>
             <Button 
               variant="outline" 
               size="lg" 
-              className="rounded-full px-8"
+              className="rounded-full px-8 border-pink-500 text-pink-700 hover:bg-pink-100"
               onClick={() => {
                 const element = document.querySelector('#contact');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              Hubungi Saya
+              Hubungi Aku
             </Button>
           </motion.div>
 
@@ -97,12 +100,12 @@ export default function HeroSection() {
               <motion.a
                 key={social.label}
                 href={social.href}
-                className="p-3 rounded-full glass hover:shadow-glow transition-all duration-300"
+                className="p-3 rounded-full bg-white/40 backdrop-blur hover:bg-pink-200 transition-all duration-300"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label={social.label}
               >
-                <social.icon className="h-5 w-5 text-foreground" />
+                <social.icon className="h-5 w-5 text-pink-700" />
               </motion.a>
             ))}
           </motion.div>
@@ -111,11 +114,11 @@ export default function HeroSection() {
 
       <motion.button
         onClick={scrollToAbout}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 p-3 rounded-full glass animate-float cursor-pointer"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 p-3 rounded-full bg-white/40 backdrop-blur animate-bounce cursor-pointer"
         whileHover={{ scale: 1.1 }}
         aria-label="Scroll to About"
       >
-        <ArrowDown className="h-5 w-5 text-primary" />
+        <ArrowDown className="h-5 w-5 text-pink-700" />
       </motion.button>
     </section>
   );
