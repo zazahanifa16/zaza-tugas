@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+ import { motion } from 'framer-motion';
 import { Github, Instagram, Heart } from 'lucide-react';
 
 export default function Footer() {
@@ -15,16 +15,22 @@ export default function Footer() {
 
           {/* LEFT: FOTO + TEXT */}
           <div className="flex items-center gap-3">
-            <img
-              src="/profile.jpg" // ganti dengan foto kamu
+            <motion.img
+              src="/profile.jpg" // simpan foto di folder public
               alt="Zaza Hanifa"
-              className="w-10 h-10 rounded-full object-cover border-2 border-pink-200"
+              className="w-12 h-12 rounded-full object-cover border-2 border-pink-300 shadow-sm"
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: 'spring', stiffness: 200 }}
+              onError={(e) => {
+                e.currentTarget.src = 'https://via.placeholder.com/100x100.png?text=Z';
+              }}
             />
 
             <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
               className="flex items-center gap-2 text-pink-500"
             >
               <span>© {currentYear} Made with</span>
@@ -41,16 +47,18 @@ export default function Footer() {
             className="flex items-center gap-4"
           >
             {socialLinks.map((social) => (
-              <a
+              <motion.a
                 key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                whileHover={{ scale: 1.2, y: -2 }}
+                whileTap={{ scale: 0.95 }}
                 className="p-2 rounded-full hover:bg-pink-100 transition-colors text-pink-400 hover:text-pink-600"
                 aria-label={social.label}
               >
                 <social.icon className="h-5 w-5" />
-              </a>
+              </motion.a>
             ))}
           </motion.div>
         </div>
